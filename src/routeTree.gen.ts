@@ -10,33 +10,73 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContractsRouteImport } from './routes/contracts'
+import { Route as EnclavesRouteImport } from './routes/enclaves'
+import { Route as FederationRouteImport } from './routes/federation'
+import { Route as ProofsRouteImport } from './routes/proofs'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContractsRoute = ContractsRouteImport.update({
+  id: '/contracts',
+  path: '/contracts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnclavesRoute = EnclavesRouteImport.update({
+  id: '/enclaves',
+  path: '/enclaves',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FederationRoute = FederationRouteImport.update({
+  id: '/federation',
+  path: '/federation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProofsRoute = ProofsRouteImport.update({
+  id: '/proofs',
+  path: '/proofs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contracts': typeof ContractsRoute
+  '/enclaves': typeof EnclavesRoute
+  '/federation': typeof FederationRoute
+  '/proofs': typeof ProofsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contracts': typeof ContractsRoute
+  '/enclaves': typeof EnclavesRoute
+  '/federation': typeof FederationRoute
+  '/proofs': typeof ProofsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contracts': typeof ContractsRoute
+  '/enclaves': typeof EnclavesRoute
+  '/federation': typeof FederationRoute
+  '/proofs': typeof ProofsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/contracts' | '/enclaves' | '/federation' | '/proofs'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/contracts' | '/enclaves' | '/federation' | '/proofs'
+  id: '__root__' | '/' | '/contracts' | '/enclaves' | '/federation' | '/proofs'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContractsRoute: typeof ContractsRoute
+  EnclavesRoute: typeof EnclavesRoute
+  FederationRoute: typeof FederationRoute
+  ProofsRoute: typeof ProofsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +88,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contracts': {
+      id: '/contracts'
+      path: '/contracts'
+      fullPath: '/contracts'
+      preLoaderRoute: typeof ContractsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/enclaves': {
+      id: '/enclaves'
+      path: '/enclaves'
+      fullPath: '/enclaves'
+      preLoaderRoute: typeof EnclavesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/federation': {
+      id: '/federation'
+      path: '/federation'
+      fullPath: '/federation'
+      preLoaderRoute: typeof FederationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/proofs': {
+      id: '/proofs'
+      path: '/proofs'
+      fullPath: '/proofs'
+      preLoaderRoute: typeof ProofsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContractsRoute: ContractsRoute,
+  EnclavesRoute: EnclavesRoute,
+  FederationRoute: FederationRoute,
+  ProofsRoute: ProofsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
