@@ -10,14 +10,30 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BillingRouteImport } from './routes/billing'
+import { Route as ComplianceRouteImport } from './routes/compliance'
 import { Route as ContractsRouteImport } from './routes/contracts'
 import { Route as EnclavesRouteImport } from './routes/enclaves'
 import { Route as FederationRouteImport } from './routes/federation'
+import { Route as GovernanceRouteImport } from './routes/governance'
+import { Route as InferenceRouteImport } from './routes/inference'
+import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as ProofsRouteImport } from './routes/proofs'
+import { Route as RegistryRouteImport } from './routes/registry'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BillingRoute = BillingRouteImport.update({
+  id: '/billing',
+  path: '/billing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComplianceRoute = ComplianceRouteImport.update({
+  id: '/compliance',
+  path: '/compliance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContractsRoute = ContractsRouteImport.update({
@@ -35,48 +51,126 @@ const FederationRoute = FederationRouteImport.update({
   path: '/federation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GovernanceRoute = GovernanceRouteImport.update({
+  id: '/governance',
+  path: '/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InferenceRoute = InferenceRouteImport.update({
+  id: '/inference',
+  path: '/inference',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketplaceRoute = MarketplaceRouteImport.update({
+  id: '/marketplace',
+  path: '/marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProofsRoute = ProofsRouteImport.update({
   id: '/proofs',
   path: '/proofs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RegistryRoute = RegistryRouteImport.update({
+  id: '/registry',
+  path: '/registry',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/billing': typeof BillingRoute
+  '/compliance': typeof ComplianceRoute
   '/contracts': typeof ContractsRoute
   '/enclaves': typeof EnclavesRoute
   '/federation': typeof FederationRoute
+  '/governance': typeof GovernanceRoute
+  '/inference': typeof InferenceRoute
+  '/marketplace': typeof MarketplaceRoute
   '/proofs': typeof ProofsRoute
+  '/registry': typeof RegistryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/billing': typeof BillingRoute
+  '/compliance': typeof ComplianceRoute
   '/contracts': typeof ContractsRoute
   '/enclaves': typeof EnclavesRoute
   '/federation': typeof FederationRoute
+  '/governance': typeof GovernanceRoute
+  '/inference': typeof InferenceRoute
+  '/marketplace': typeof MarketplaceRoute
   '/proofs': typeof ProofsRoute
+  '/registry': typeof RegistryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/billing': typeof BillingRoute
+  '/compliance': typeof ComplianceRoute
   '/contracts': typeof ContractsRoute
   '/enclaves': typeof EnclavesRoute
   '/federation': typeof FederationRoute
+  '/governance': typeof GovernanceRoute
+  '/inference': typeof InferenceRoute
+  '/marketplace': typeof MarketplaceRoute
   '/proofs': typeof ProofsRoute
+  '/registry': typeof RegistryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contracts' | '/enclaves' | '/federation' | '/proofs'
+  fullPaths:
+    | '/'
+    | '/billing'
+    | '/compliance'
+    | '/contracts'
+    | '/enclaves'
+    | '/federation'
+    | '/governance'
+    | '/inference'
+    | '/marketplace'
+    | '/proofs'
+    | '/registry'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contracts' | '/enclaves' | '/federation' | '/proofs'
-  id: '__root__' | '/' | '/contracts' | '/enclaves' | '/federation' | '/proofs'
+  to:
+    | '/'
+    | '/billing'
+    | '/compliance'
+    | '/contracts'
+    | '/enclaves'
+    | '/federation'
+    | '/governance'
+    | '/inference'
+    | '/marketplace'
+    | '/proofs'
+    | '/registry'
+  id:
+    | '__root__'
+    | '/'
+    | '/billing'
+    | '/compliance'
+    | '/contracts'
+    | '/enclaves'
+    | '/federation'
+    | '/governance'
+    | '/inference'
+    | '/marketplace'
+    | '/proofs'
+    | '/registry'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BillingRoute: typeof BillingRoute
+  ComplianceRoute: typeof ComplianceRoute
   ContractsRoute: typeof ContractsRoute
   EnclavesRoute: typeof EnclavesRoute
   FederationRoute: typeof FederationRoute
+  GovernanceRoute: typeof GovernanceRoute
+  InferenceRoute: typeof InferenceRoute
+  MarketplaceRoute: typeof MarketplaceRoute
   ProofsRoute: typeof ProofsRoute
+  RegistryRoute: typeof RegistryRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -86,6 +180,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/billing': {
+      id: '/billing'
+      path: '/billing'
+      fullPath: '/billing'
+      preLoaderRoute: typeof BillingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compliance': {
+      id: '/compliance'
+      path: '/compliance'
+      fullPath: '/compliance'
+      preLoaderRoute: typeof ComplianceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contracts': {
@@ -109,6 +217,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FederationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/governance': {
+      id: '/governance'
+      path: '/governance'
+      fullPath: '/governance'
+      preLoaderRoute: typeof GovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inference': {
+      id: '/inference'
+      path: '/inference'
+      fullPath: '/inference'
+      preLoaderRoute: typeof InferenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketplace': {
+      id: '/marketplace'
+      path: '/marketplace'
+      fullPath: '/marketplace'
+      preLoaderRoute: typeof MarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/proofs': {
       id: '/proofs'
       path: '/proofs'
@@ -116,15 +245,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProofsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/registry': {
+      id: '/registry'
+      path: '/registry'
+      fullPath: '/registry'
+      preLoaderRoute: typeof RegistryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BillingRoute: BillingRoute,
+  ComplianceRoute: ComplianceRoute,
   ContractsRoute: ContractsRoute,
   EnclavesRoute: EnclavesRoute,
   FederationRoute: FederationRoute,
+  GovernanceRoute: GovernanceRoute,
+  InferenceRoute: InferenceRoute,
+  MarketplaceRoute: MarketplaceRoute,
   ProofsRoute: ProofsRoute,
+  RegistryRoute: RegistryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
