@@ -17,7 +17,7 @@ export function PageHeader({ eyebrow, title, decision, children }: { eyebrow: st
   );
 }
 
-export function Panel({ title, children, className, aside }: { title?: string; children: ReactNode; className?: string; aside?: ReactNode }) {
+export function Panel({ title, children, className, aside }: { title?: string; children: ReactNode; className?: string; aside?: ReactNode | undefined }) {
   return (
     <section className={cn("rounded-lg border bg-card p-5 text-card-foreground", className)}>
       {title && (
@@ -31,7 +31,7 @@ export function Panel({ title, children, className, aside }: { title?: string; c
   );
 }
 
-export function Stat({ label, value, hint, tone = "default" }: { label: string; value: string; hint?: string; tone?: "default" | "good" | "warn" | "bad" }) {
+export function Stat({ label, value, hint, tone = "default" }: { label: string; value: string; hint?: string | undefined; tone?: "default" | "good" | "warn" | "bad" }) {
   const toneCls = { default: "text-foreground", good: "text-primary", warn: "text-warning", bad: "text-destructive" }[tone];
   return (
     <div className="rounded-lg border bg-card p-4">

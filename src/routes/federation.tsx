@@ -39,7 +39,7 @@ function FederationPage() {
                   <YAxis domain={[0.4, 1]} stroke="var(--muted-foreground)" fontSize={11} />
                   <Tooltip contentStyle={{ background: "var(--popover)", border: "1px solid var(--border)", color: "var(--foreground)" }} />
                   <Legend />
-                  {ORGS.map((o, i) => <Line key={o.id} dataKey={o.id} name={o.name} stroke={COLORS[i]} strokeWidth={2} dot={false} />)}
+                  {ORGS.map((o, i) => <Line key={o.id} dataKey={o.id} name={o.name} stroke={COLORS[i] ?? "var(--primary)"} strokeWidth={2} dot={false} />)}
                 </LineChart>
               </ResponsiveContainer>
             </div>
