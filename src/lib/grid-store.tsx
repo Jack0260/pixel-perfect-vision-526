@@ -38,7 +38,7 @@ import type {
 } from "@/domain/types";
 
 export const EPOCHS = 5;
-export const LR = 0.5;
+export const LR = 0.08;
 export const CLIP_NORM = 1.0;
 export const NORM_BOUND = 1.25;
 export const DP_BASE = 0.04;

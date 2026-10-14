@@ -7,7 +7,7 @@ const POS = [
   { x: 590, y: 160 },
 ];
 
-export function Topology({ last }: { last?: RoundSummary }) {
+export function Topology({ last }: { last: RoundSummary | undefined }) {
   const status = (id: string) =>
     !last ? "idle" : last.accepted.includes(id) ? "ok" : last.rejected.includes(id) ? "bad" : last.blocked.includes(id) ? "blocked" : "idle";
   const stroke = { ok: "var(--primary)", bad: "var(--destructive)", blocked: "var(--muted-foreground)", idle: "var(--border)" };

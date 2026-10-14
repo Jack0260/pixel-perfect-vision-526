@@ -30,7 +30,7 @@ function ThemeSwitch() {
     if (saved) setTheme(saved);
   }, []);
   useEffect(() => {
-    document.documentElement.dataset.theme = theme;
+    document.documentElement.dataset["theme"] = theme;
     localStorage.setItem("sovereign-theme", theme);
   }, [theme]);
   return (
