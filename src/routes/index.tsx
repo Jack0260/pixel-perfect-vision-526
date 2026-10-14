@@ -47,7 +47,7 @@ function GridPage() {
           </div>
           <Panel title="Try this">
             <ol className="list-decimal space-y-1 pl-5 text-sm text-muted-foreground">
-              <li>Run 5 rounds and watch accuracy climb while raw data stays put.</li>
+              <li>Run 5 rounds and watch loss fall while raw data stays put.</li>
               <li>On <Link to="/federation" className="text-primary underline">Federated runtime</Link>, make one org send a poisoned update. The <Link to="/proofs" className="text-primary underline">proof layer</Link> rejects it.</li>
               <li>In <Link to="/governance" className="text-primary underline">Governance</Link>, remove eu-north from a contract. Once approved, that org is blocked from exporting.</li>
             </ol>
